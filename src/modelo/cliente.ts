@@ -64,4 +64,5 @@ export default class Cliente {
         this.servicosConsumidos.push(servico)
         servico.addConsumo()
     }
+   
 }

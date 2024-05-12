@@ -5,6 +5,7 @@ import Empresa from "../modelo/empresa";
 import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
 import CadastroCliente from "../negocio/cadastroCliente";
+import CadastroConsumo from "../negocio/cadastroConsumo";
 import CadastroPet from "../negocio/cadastroPet";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
@@ -14,6 +15,8 @@ import DeleteProduto from "../negocio/deleteProduto";
 import DeleteServico from "../negocio/deleteServico";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
+import ListagemConsumo from "../negocio/listagemProdEServConsumidos";
+import ListagemProdEServConsumidos from "../negocio/listagemProdEServConsumidos";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
 
@@ -29,7 +32,7 @@ let cli6 = new Cliente('Pietra Almeida', 'Pietra A', new CPF('39454475554',new D
 let cli7 = new Cliente('Heloisa Cabral', 'Heloisa C', new CPF('14454877456',new Date(27,7,1986)))
 let cli8 = new Cliente('Luiza Ferreira', 'Luiza F', new CPF('52452245451',new Date(30,1,1992)))
 let cli9 = new Cliente('Iago Chaves', 'Iago C', new CPF('11454445458',new Date(14,8,1955)))
-let cli10 = new Cliente('Noemia Carvalho', 'Noemia C', new CPF('31454745895',new Date(7,5,19881)))
+let cli10 = new Cliente('Noemia Carvalho', 'Noemia C', new CPF('31454745895',new Date(7,5,1981)))
 let cli11 = new Cliente('Dalva Veloso', 'Dalva V', new CPF('56554745895',new Date(29,6,1992)))
 
 empresa.getClientes.push(cli1)
@@ -44,12 +47,12 @@ empresa.getClientes.push(cli9)
 empresa.getClientes.push(cli10)
 empresa.getClientes.push(cli11)
 
-let servico1 = new Servico("Máscara ácido hialuronico", 32)
-let servico2 = new Servico("Máscara de retinol", 45)
-let servico3 = new Servico("Extração de cravos", 75)
-let servico4 = new Servico("Design de sobrancelha", 45)
-let servico5 = new Servico("Hidratação capilar com ácido hialuronico", 68)
-let servico6 = new Servico("Pedicure e Manicure", 40)
+let servico1 = new Servico("Banho com Shampoo de Acido Hialuronico", 32);
+let servico2 = new Servico("Banho com Mascara de Retinol", 45);
+let servico3 = new Servico("Tratamento de Pele: Extracao de Pulgas", 75);
+let servico4 = new Servico("Corte de Pelos e Design de Sobrancelha", 45);
+let servico5 = new Servico("Banho de Hidratação com Acido Hialuronico", 68);
+let servico6 = new Servico("Pedicure e Manicure Canina", 40);
 
 empresa.getServicos.push(servico1)
 empresa.getServicos.push(servico2)
@@ -58,12 +61,12 @@ empresa.getServicos.push(servico4)
 empresa.getServicos.push(servico5)
 empresa.getServicos.push(servico6)
 
-let produto1 = new Produto("Shampoo",12)
-let produto2 = new Produto("Condicionador",20)
-let produto3 = new Produto("Kit Shampoo e cONDICIONADOR", 30)
-let produto4 = new Produto("Sabonete Esfoliante", 8)
-let produto5 = new Produto("Óleo Corporal", 18)
-let produto6 = new Produto("Máscara Facial", 25)
+let produto1 = new Produto("Shampoo para Pelos Sensiveis", 12);
+let produto2 = new Produto("Condicionador para Pelos Longos", 20);
+let produto3 = new Produto("Kit Shampoo e Condicionador para Pelos Brilhantes", 30);
+let produto4 = new Produto("Sabonete Esfoliante para Pele de Cachorro", 8);
+let produto5 = new Produto("Oleo Corporal para Pelagem Sedosa", 18);
+let produto6 = new Produto("Máscara Facial Relaxante para Pets", 25);
 
 empresa.getProdutos.push(produto1)
 empresa.getProdutos.push(produto2)
@@ -110,6 +113,9 @@ while (execucao) {
     console.log(`10 - Cadastrar serviço`);
     console.log(`11 - Listar todos os serviços`)
     console.log(`12 - Deletar servico`)
+    console.log(`13 - Cadastrar Consumo`)
+    console.log(`14 - Listar consumo`)
+
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -163,6 +169,13 @@ while (execucao) {
         case 12:
             let deleteServico = new DeleteServico(empresa.getServicos)
             deleteServico.deletar()
+            break;
+        case 13:
+            let cadastroConsumo = new CadastroConsumo(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            cadastroConsumo.cadastrar()
+        case 14:
+            let listagemConsumo = new ListagemConsumo(empresa.getClientes, empresa.getPets)
+            listagemConsumo.listar()
             break;
         case 0:
             execucao = false
