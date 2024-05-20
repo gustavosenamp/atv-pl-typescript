@@ -26,6 +26,10 @@ export default class Cliente {
         this.servicosConsumidos = []
         this.pets = []
     }
+    public get getNome(): string{
+        return this.nome
+    }
+
     public get getCpf(): CPF {
         return this.cpf
     }
@@ -63,6 +67,10 @@ export default class Cliente {
     public addServico(servico: Servico){
         this.servicosConsumidos.push(servico)
         servico.addConsumo()
+    }
+
+    public addPet(pet: Pet): void {
+        this.pets.push(pet);
     }
    
 }

@@ -2,6 +2,7 @@ import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
 import CPF from "../modelo/cpf";
 import Empresa from "../modelo/empresa";
+import Pet from "../modelo/pet";
 import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
 import CadastroCliente from "../negocio/cadastroCliente";
@@ -14,11 +15,15 @@ import DeletePet from "../negocio/deletePet";
 import DeleteProduto from "../negocio/deleteProduto";
 import DeleteServico from "../negocio/deleteServico";
 import ListagemClientes from "../negocio/listagemClientes";
+import ListagemConsumoPorRaca from "../negocio/listagemConsumoPorPet";
+import ListagemConsumoTop5PorValor from "../negocio/listagemConsumoTop5PorValor";
 import ListagemPets from "../negocio/listagemPets";
 import ListagemConsumo from "../negocio/listagemProdEServConsumidos";
 import ListagemProdEServConsumidos from "../negocio/listagemProdEServConsumidos";
+import ListagemProdEServMaisConsumidos from "../negocio/listagemProdEServMaisConsumidos";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
+import ListagemConsumoTop10 from "../negocio/listagemTop10";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -47,11 +52,49 @@ empresa.getClientes.push(cli9)
 empresa.getClientes.push(cli10)
 empresa.getClientes.push(cli11)
 
+// Criação de pets
+let pet1 = new Pet('Rex', cli1.getNome, 'Golden Retriever', 'Macho', 'Cachorro');
+let pet2 = new Pet('Mia', cli2.getNome, 'Siamês', 'Fêmea', 'Gato');
+let pet3 = new Pet('Buddy', cli3.getNome, 'Beagle', 'Macho', 'Cachorro');
+let pet4 = new Pet('Luna', cli4.getNome, 'Labrador', 'Fêmea', 'Cachorro');
+let pet5 = new Pet('Bella', cli5.getNome, 'Persa', 'Fêmea', 'Gato');
+let pet6 = new Pet('Charlie', cli6.getNome, 'Poodle', 'Macho', 'Cachorro');
+let pet7 = new Pet('Max', cli7.getNome, 'Bulldog', 'Macho', 'Cachorro');
+let pet8 = new Pet('Lucy', cli8.getNome, 'Bengal', 'Fêmea', 'Gato');
+let pet9 = new Pet('Daisy', cli9.getNome, 'Shih Tzu', 'Fêmea', 'Cachorro');
+let pet10 = new Pet('Lily', cli10.getNome, 'Maine Coon', 'Fêmea', 'Gato');
+let pet11 = new Pet('Milo', cli11.getNome, 'Dachshund', 'Macho', 'Cachorro');
+
+cli1.addPet(pet1);
+cli2.addPet(pet2);
+cli3.addPet(pet3);
+cli4.addPet(pet4);
+cli5.addPet(pet5);
+cli6.addPet(pet6);
+cli7.addPet(pet7);
+cli8.addPet(pet8);
+cli9.addPet(pet9);
+cli10.addPet(pet10);
+cli11.addPet(pet11);
+
+
+empresa.getPets.push(pet1);
+empresa.getPets.push(pet2);
+empresa.getPets.push(pet3);
+empresa.getPets.push(pet4);
+empresa.getPets.push(pet5);
+empresa.getPets.push(pet6);
+empresa.getPets.push(pet7);
+empresa.getPets.push(pet8);
+empresa.getPets.push(pet9);
+empresa.getPets.push(pet10);
+empresa.getPets.push(pet11);
+
 let servico1 = new Servico("Banho com Shampoo de Acido Hialuronico", 32);
 let servico2 = new Servico("Banho com Mascara de Retinol", 45);
 let servico3 = new Servico("Tratamento de Pele: Extracao de Pulgas", 75);
 let servico4 = new Servico("Corte de Pelos e Design de Sobrancelha", 45);
-let servico5 = new Servico("Banho de Hidratação com Acido Hialuronico", 68);
+let servico5 = new Servico("Banho de Hidrataçao com Acido Hialuronico", 68);
 let servico6 = new Servico("Pedicure e Manicure Canina", 40);
 
 empresa.getServicos.push(servico1)
@@ -66,7 +109,7 @@ let produto2 = new Produto("Condicionador para Pelos Longos", 20);
 let produto3 = new Produto("Kit Shampoo e Condicionador para Pelos Brilhantes", 30);
 let produto4 = new Produto("Sabonete Esfoliante para Pele de Cachorro", 8);
 let produto5 = new Produto("Oleo Corporal para Pelagem Sedosa", 18);
-let produto6 = new Produto("Máscara Facial Relaxante para Pets", 25);
+let produto6 = new Produto("Mascara Facial Relaxante para Pets", 25);
 
 empresa.getProdutos.push(produto1)
 empresa.getProdutos.push(produto2)
@@ -115,6 +158,10 @@ while (execucao) {
     console.log(`12 - Deletar servico`)
     console.log(`13 - Cadastrar Consumo`)
     console.log(`14 - Listar consumo`)
+    console.log(`15 - Listar Top 10 de Clientes que mais consumiram (em quantidade)`)
+    console.log(`16 - Listar Produtos e Serviços mais consumidos`)
+    console.log(`17 - Listar produtos e serviços mais consumidos por tipo de raça de pet`);
+    console.log(`18 - Listar Top 5 Clintes que mais consumiram (por valor)`);
 
     console.log(`0 - Sair`);
 
@@ -177,6 +224,22 @@ while (execucao) {
             let listagemConsumo = new ListagemConsumo(empresa.getClientes, empresa.getPets)
             listagemConsumo.listar()
             break;
+        case 15:
+            let listagemTop10 = new ListagemConsumoTop10(empresa.getClientes, empresa.getPets)
+            listagemTop10.listar()
+            break;
+        case 16:
+            let listagemMaisConsumidos = new ListagemProdEServMaisConsumidos(empresa.getClientes)
+            listagemMaisConsumidos.listar()
+            break;
+        case 17:
+            let listagemConsumoPorRaca = new ListagemConsumoPorRaca(empresa.getClientes)
+            listagemConsumoPorRaca.listar()
+            break;
+        case 18:
+            let listagemConsumoTop5PorValor = new ListagemConsumoTop5PorValor(empresa.getClientes)
+            listagemConsumoTop5PorValor.listar()
+            break;      
         case 0:
             execucao = false
             console.log(`Até mais`)

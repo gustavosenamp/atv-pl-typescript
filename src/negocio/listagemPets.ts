@@ -11,6 +11,7 @@ export default class ListagemPets extends Listagem{
         console.log(`\nLista de todos os pets:`);
         this.pets.forEach(pet => {
             console.log(`Nome: ` + pet.nome);
+            console.log(`Raça: ` + pet.getRaca)
             console.log(`Dono: ` + pet.dono)
             console.log(`--------------------------------------`);
         });
