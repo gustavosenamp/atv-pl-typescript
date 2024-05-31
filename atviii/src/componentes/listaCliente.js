@@ -1,16 +1,15 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 export default function ListaCliente(props) {
-    let tema = props.tema
+    let tema = props.tema;
     return (
         <div className="container-fluid">
             <div className="list-group">
-                <a href="#" className="list-group-item list-group-item-action">Cliente 1</a>
-                <a href="#" className="list-group-item list-group-item-action">Cliente 2</a>
-                <a href="#" className="list-group-item list-group-item-action">Cliente 3</a>
-                <a href="#" className="list-group-item list-group-item-action" style={{ backgroundColor: tema }} >Cliente 4</a>
-                <a href="#" className="list-group-item list-group-item-action">Cliente 5</a>
-                <a href="#" className="list-group-item list-group-item-action">Cliente 6</a>
+                <button className="list-group-item list-group-item-action btn btn-link">Cliente 1</button>
+                <button className="list-group-item list-group-item-action btn btn-link">Cliente 2</button>
+                <button className="list-group-item list-group-item-action btn btn-link">Cliente 3</button>
+                <button className="list-group-item list-group-item-action btn btn-link" style={{ backgroundColor: tema }}>Cliente 4</button>
+                <button className="list-group-item list-group-item-action btn btn-link">Cliente 5</button>
+                <button className="list-group-item list-group-item-action btn btn-link">Cliente 6</button>
             </div>
         </div>
-    )
+    );
 }
