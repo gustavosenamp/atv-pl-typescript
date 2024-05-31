@@ -15,9 +15,6 @@ export default class FormularioCadastroServico extends Component<props> {
                         <input type="text" className="form-control" placeholder="Nome do Serviço" aria-label="Nome do Serviço" aria-describedby="basic-addon1" />
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="Descrição" aria-label="Descrição" aria-describedby="basic-addon1" />
-                    </div>
-                    <div className="input-group mb-3">
                         <input type="text" className="form-control" placeholder="Preço" aria-label="Preço" aria-describedby="basic-addon1" />
                     </div>
                     <div className="input-group mb-3">
