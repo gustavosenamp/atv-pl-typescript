@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import ListaCliente from "./listaCliente";
 import FormularioCadastroCliente from "./formularioCadastroCliente";
@@ -8,76 +8,115 @@ import ListaProduto from "./listaProduto";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import ListaServico from "./listaServico";
 import FormularioCadastroServico from "./formularioCadastroServico";
+import FormularioConsumoCliente from "./formularioConsumoCliente";
+import ListaConsumoCliente from "./listaConsumoCliente";
 
-export default function Roteador() {
-    const [tela, setTela] = useState('Clientes');
-    const selecionarView = (valor, e) => {
-        e.preventDefault();
-        setTela(valor);
-    };
+const Roteador = () => {
+  const [tela, setTela] = useState("Clientes");
 
-    const construirView = () => {
-        switch(tela) {
-            case 'Clientes':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <ListaCliente tema="#e3f2fd" />
-                    </>
-                );
-            case 'Cadastrar Clientes':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <FormularioCadastroCliente tema="#e3f2fd" />
-                    </>
-                );
-            case 'Pets':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <ListaPet tema="#e3f2fd" />
-                    </>
-                );
-            case 'Cadastrar Pets':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <FormularioCadastroPet tema="#e3f2fd" />
-                    </>
-                );
-            case 'Produtos':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <ListaProduto tema="#e3f2fd" />
-                    </>
-                );
-            case 'Cadastrar Produtos':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <FormularioCadastroProduto tema="#e3f2fd" />
-                    </>
-                );
-            case 'Serviços':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <ListaServico tema="#e3f2fd" />
-                    </>
-                );
-            case 'Cadastrar Serviços':
-                return (
-                    <>
-                        <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastrar Clientes', 'Pets', 'Cadastrar Pets', 'Produtos', 'Cadastrar Produtos', 'Serviços', 'Cadastrar Serviços']} />
-                        <FormularioCadastroServico tema="#e3f2fd" />
-                    </>
-                );
-            default:
-                return null;
-        }
-    };
+  const selecionarView = (novaTela) => {
+    console.log(novaTela);
+    setTela(novaTela);
+  };
 
-    return construirView();
-}
+  let barraNavegacao = (
+    <BarraNavegacao
+      seletorView={selecionarView}
+      tema="#e3f2fd"
+      botoes={[
+        "Clientes",
+        "Cadastros Clientes",
+        "Pets",
+        "Cadastros Pets",
+        "Produtos",
+        "Cadastros Produtos",
+        "Serviços",
+        "Cadastros Serviços",
+        "Consumos",
+        "Cadastro Consumo",
+      ]}
+    />
+  );
+
+  switch (tela) {
+    case "Clientes":
+      return (
+        <>
+          {barraNavegacao}
+          <ListaCliente tema="#e3f2fd" />
+        </>
+      );
+    case "Cadastros Clientes":
+      return (
+        <>
+          {barraNavegacao}
+          <FormularioCadastroCliente tema="#e3f2fd" />
+        </>
+      );
+    case "Pets":
+      return (
+        <>
+          {barraNavegacao}
+          <ListaPet tema="#e3f2fd" />
+        </>
+      );
+    case "Cadastros Pets":
+      return (
+        <>
+          {barraNavegacao}
+          <FormularioCadastroPet tema="#e3f2fd" />
+        </>
+      );
+    case "Produtos":
+      return (
+        <>
+          {barraNavegacao}
+          <ListaProduto tema="#e3f2fd" />
+        </>
+      );
+    case "Cadastros Produtos":
+      return (
+        <>
+          {barraNavegacao}
+          <FormularioCadastroProduto tema="#e3f2fd" />
+        </>
+      );
+    case "Serviços":
+      return (
+        <>
+          {barraNavegacao}
+          <ListaServico tema="#e3f2fd" />
+        </>
+      );
+    case "Cadastros Serviços":
+      return (
+        <>
+          {barraNavegacao}
+          <FormularioCadastroServico tema="#e3f2fd" />
+        </>
+      );
+    case "Consumos":
+      return (
+        <>
+          {barraNavegacao}
+          <ListaConsumoCliente tema="#e3f2fd" />
+        </>
+      );
+    case "Cadastro Consumo":
+        return (
+          <>
+            {barraNavegacao}
+            <FormularioConsumoCliente tema="#e3f2fd" />
+          </>
+        );
+    default:
+      return (
+        <>
+          {barraNavegacao}
+          <ListaCliente tema="#e3f2fd" />
+        </>
+      );
+  }
+};
+
+export default Roteador;
