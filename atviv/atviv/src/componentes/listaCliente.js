@@ -69,7 +69,7 @@ export default function ListaCliente(props) {
                             <>
                                 <p>Telefone(s):</p>
                                 {cliente.telefones.map(t => (
-                                    <React.Fragment key={t.id}><p>  . {formatTelefone(t)}</p></React.Fragment>
+                                    <React.Fragment key={t.id}><p>   {formatTelefone(t)}</p></React.Fragment>
                                 ))}
                             </>
                         )}
