@@ -42,6 +42,14 @@ export class CreateCompras1714943017214 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'tipoPet',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'racaPet',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'totalCompra',
                         type: 'varchar',
                     }

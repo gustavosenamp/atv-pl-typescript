@@ -14,6 +14,10 @@ export class CreateServicos1714929371626 implements MigrationInterface {
                         generationStrategy: 'increment'
                     },
                     {
+                        name: 'codigoServico',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'nomeServico',
                         type: 'varchar',
                     },

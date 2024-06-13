@@ -20,3 +20,5 @@ export class Pet {
     @Column('varchar')
     genero: string;
 }
+
+export default Pet;

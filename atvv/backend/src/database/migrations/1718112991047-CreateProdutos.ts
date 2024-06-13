@@ -14,6 +14,10 @@ export class CreateProdutos1714929354075 implements MigrationInterface {
                         generationStrategy: 'increment'
                     },
                     {
+                        name: 'codigoProduto',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'nomeProduto',
                         type: 'varchar',
                     },

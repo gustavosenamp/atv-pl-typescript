@@ -33,10 +33,6 @@ export class CreateClientes1718112944250 implements MigrationInterface {
                         name: 'telefone',
                         type: 'varchar',
                     },
-                    {
-                        name: 'pet',
-                        type: 'varchar',
-                    }
                 ]
             })
         )

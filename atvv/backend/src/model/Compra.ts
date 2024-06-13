@@ -27,5 +27,13 @@ export class Compra {
     quantidade: string;
 
     @Column('varchar')
+    tipoPet: string;
+
+    @Column('varchar')
+    racaPet: string;
+
+    @Column('varchar')
     totalCompra: string;
 }
+
+export default Compra;

@@ -7,10 +7,10 @@ export class Cliente {
     id: number
 
     @Column('varchar')
-    Nome: string
+    nome: string
 
     @Column('varchar')
-    NomeSocial: string
+    nomeSocial: string
 
     @Column('varchar')
     cpf: string
@@ -25,3 +25,5 @@ export class Cliente {
     idPet: number
 
 }
+
+export default Cliente;

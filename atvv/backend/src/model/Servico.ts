@@ -15,3 +15,5 @@ export class Servico {
     precoServico: string;
 
 }
+
+export default Servico;

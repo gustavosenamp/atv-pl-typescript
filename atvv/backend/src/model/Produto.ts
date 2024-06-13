@@ -14,3 +14,5 @@ export class Produto {
     @Column('varchar')
     precoProduto: string;
 }
+
+export default Produto;
