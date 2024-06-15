@@ -1,71 +1,65 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import ListaCliente from "./listaClientes";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
-import FormularioConsumoCliente from "./formularioConsumo";
-import ListaConsumoCliente from "./listaConsumo";
-import FormularioCadastroPet from "./formularioCadastroPet";
-import ListaPet from "./listaPets";
-import FormularioCadastroProduto from "./formularioCadastroProduto";
 import ListaProduto from "./listaProduto";
-import FormularioCadastroServico from "./formularioCadastroServico";
 import ListaServico from "./listaServico";
+import ListaCompra from "./listaConsumo";
+import FormularioCadastroClienteEPet from "./formularioCadastroClienteEPet";
+import FormularioCadastroProduto from "./formularioCadastroProduto";
+import FormularioCadastroServico from "./formularioCadastroServico";
+import FormularioCadastroConsumo from "./formularioCadastroConsumo";
+//import Analises from "./analises";
+import ListaPet from "./listaPets";
 
-type State = {
-  tela: string;
-};
+type Tela =
+  | "Clientes"
+  | "Pets"
+  | "Produtos"
+  | "Serviços"
+  | "Compras"
+  | "Cadastrar Cliente/Pet"
+  | "Cadastrar Produto"
+  | "Cadastrar Serviço"
+  | "Comprar"
+  | "Análises";
 
-export default class Roteador extends Component<{}, State> {
-  constructor(props: {} | Readonly<{}>) {
-    super(props);
-    this.state = {
-      tela: "Clientes",
-    };
-    this.selecionarView = this.selecionarView.bind(this);
-  }
+export default function Roteador() {
+  const [tela, setTela] = useState<Tela>("Clientes");
 
-  selecionarView(novaTela: string, evento: Event) {
-    evento.preventDefault();
-    console.log(novaTela);
-    this.setState({
-      tela: novaTela,
-    });
-  }
+  const selecionarView = (
+    valor: Tela,
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    e.preventDefault();
+    setTela(valor);
+  };
 
-  render() {
+  const construirView = () => {
     let barraNavegacao = (
       <BarraNavegacao
-        seletorView={this.selecionarView}
+        seletorView={selecionarView}
         tema="#e3f2fd"
         botoes={[
           "Clientes",
-          "Cadastros Clientes",
-          "Consumos",
-          "Cadastros Consumos",
           "Pets",
-          "Cadastros Pets",
           "Produtos",
-          "Cadastros Produtos",
           "Serviços",
-          "Cadastros Serviços",
-          "Consumos",
-          "Cadastros Consumos",
+          "Compras",
+          "Cadastrar Cliente/Pet",
+          "Cadastrar Produto",
+          "Cadastrar Serviço",
+          "Comprar",
+          "Análises",
         ]}
       />
     );
-    switch (this.state.tela) {
+
+    switch (tela) {
       case "Clientes":
         return (
           <>
             {barraNavegacao}
             <ListaCliente tema="#e3f2fd" />
-          </>
-        );
-      case "Cadastros Clientes":
-        return (
-          <>
-            {barraNavegacao}
-            <FormularioCadastroCliente tema="#e3f2fd" />
           </>
         );
       case "Pets":
@@ -75,25 +69,11 @@ export default class Roteador extends Component<{}, State> {
             <ListaPet tema="#e3f2fd" />
           </>
         );
-      case "Cadastros Pets":
-        return (
-          <>
-            {barraNavegacao}
-            <FormularioCadastroPet tema="#e3f2fd" />
-          </>
-        );
       case "Produtos":
         return (
           <>
             {barraNavegacao}
             <ListaProduto tema="#e3f2fd" />
-          </>
-        );
-      case "Cadastros Produtos":
-        return (
-          <>
-            {barraNavegacao}
-            <FormularioCadastroProduto tema="#e3f2fd" />
           </>
         );
       case "Serviços":
@@ -103,34 +83,52 @@ export default class Roteador extends Component<{}, State> {
             <ListaServico tema="#e3f2fd" />
           </>
         );
-      case "Cadastros Serviços":
+      case "Compras":
+        return (
+          <>
+            {barraNavegacao}
+            <ListaCompra tema="#e3f2fd" />
+          </>
+        );
+      case "Cadastrar Cliente/Pet":
+        return (
+          <>
+            {barraNavegacao}
+            <FormularioCadastroClienteEPet tema="#e3f2fd" />
+          </>
+        );
+      case "Cadastrar Produto":
+        return (
+          <>
+            {barraNavegacao}
+            <FormularioCadastroProduto tema="#e3f2fd" />
+          </>
+        );
+      case "Cadastrar Serviço":
         return (
           <>
             {barraNavegacao}
             <FormularioCadastroServico tema="#e3f2fd" />
           </>
         );
-      case "Consumos":
+      case "Comprar":
         return (
           <>
             {barraNavegacao}
-            <ListaConsumoCliente tema="#e3f2fd" />
+            <FormularioCadastroConsumo tema="#e3f2fd" />
           </>
         );
-      case "Cadastros Consumos":
+      case "Análises":
         return (
           <>
             {barraNavegacao}
-            <FormularioConsumoCliente tema="#e3f2fd" />
+            <Analises tema="#e3f2fd" />
           </>
         );
       default:
-        return (
-          <>
-            {barraNavegacao}
-            <ListaCliente tema="#e3f2fd" />
-          </>
-        );
+        return null;
     }
-  }
+  };
+
+  return construirView();
 }
