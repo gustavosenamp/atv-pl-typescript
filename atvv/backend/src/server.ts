@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-const express = require('express');
+import express from 'express';
 
 
 import { AppDataSource } from './database/data-source';

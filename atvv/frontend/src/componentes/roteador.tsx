@@ -10,6 +10,7 @@ import FormularioCadastroServico from "./formularioCadastroServico";
 import FormularioCadastroConsumo from "./formularioCadastroConsumo";
 //import Analises from "./analises";
 import ListaPet from "./listaPets";
+import ListasGerais from "./listasGerais";
 
 type Tela =
   | "Clientes"
@@ -21,18 +22,16 @@ type Tela =
   | "Cadastrar Produto"
   | "Cadastrar Serviço"
   | "Comprar"
-  | "Análises";
+  | "Listas Gerais";
 
 export default function Roteador() {
   const [tela, setTela] = useState<Tela>("Clientes");
 
-  const selecionarView = (
-    valor: Tela,
-    e: React.MouseEvent<HTMLAnchorElement>
-  ) => {
+  const selecionarView = (valor: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    setTela(valor);
+    setTela(valor as Tela);
   };
+  
 
   const construirView = () => {
     let barraNavegacao = (
@@ -49,7 +48,7 @@ export default function Roteador() {
           "Cadastrar Produto",
           "Cadastrar Serviço",
           "Comprar",
-          "Análises",
+          "Listas Gerais",
         ]}
       />
     );
@@ -59,35 +58,35 @@ export default function Roteador() {
         return (
           <>
             {barraNavegacao}
-            <ListaCliente tema="#e3f2fd" />
+            <ListaCliente />
           </>
         );
       case "Pets":
         return (
           <>
             {barraNavegacao}
-            <ListaPet tema="#e3f2fd" />
+            <ListaPet />
           </>
         );
       case "Produtos":
         return (
           <>
             {barraNavegacao}
-            <ListaProduto tema="#e3f2fd" />
+            <ListaProduto />
           </>
         );
       case "Serviços":
         return (
           <>
             {barraNavegacao}
-            <ListaServico tema="#e3f2fd" />
+            <ListaServico />
           </>
         );
       case "Compras":
         return (
           <>
             {barraNavegacao}
-            <ListaCompra tema="#e3f2fd" />
+            <ListaCompra />
           </>
         );
       case "Cadastrar Cliente/Pet":
@@ -118,11 +117,11 @@ export default function Roteador() {
             <FormularioCadastroConsumo tema="#e3f2fd" />
           </>
         );
-      case "Análises":
+      case "Listas Gerais":
         return (
           <>
             {barraNavegacao}
-            <Analises tema="#e3f2fd" />
+            {<ListasGerais tema="#e3f2fd" />}
           </>
         );
       default:

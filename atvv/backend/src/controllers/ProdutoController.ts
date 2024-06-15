@@ -7,15 +7,16 @@ class ProdutoController{
 
         const produtoRepository = AppDataSource.getRepository(Produto);
 
-        const { nomeProduto, precoProduto } = request.body;
+        const { codigoProduto, nomeProduto, precoProduto } = request.body;
 
         const existProduto = await produtoRepository.findOneBy({ nomeProduto });
 
         if (existProduto){
-            return response.status(400).json({ error: "Erro: Cliente já cadastro!" });
+            return response.status(400).json({ error: "Erro: Produto já cadastro!" });
         }
 
         const produto = produtoRepository.create({
+            codigoProduto,
             nomeProduto,
             precoProduto
         });

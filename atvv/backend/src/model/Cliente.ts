@@ -20,10 +20,6 @@ export class Cliente {
 
     @Column('varchar')
     telefone: string
-
-    @Column('varchar')
-    idPet: number
-
 }
 
 export default Cliente;
