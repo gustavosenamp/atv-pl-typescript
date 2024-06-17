@@ -1,6 +1,6 @@
 import Delete from "./delete";
-import Entrada from "../io/entrada";
-import Produto from "../modelo/produto";
+import Entrada from "../../io/entrada";
+import Produto from "../../modelo/produto";
 
 export default class DeleteProduto extends Delete {
     private produtos: Array<Produto>;

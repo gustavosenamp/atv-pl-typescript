@@ -1,7 +1,7 @@
-import Entrada from "../io/entrada";
-import Cliente from "../modelo/cliente";
-import Produto from "../modelo/produto";
-import Servico from "../modelo/servico";
+import Entrada from "../../io/entrada";
+import Cliente from "../../modelo/cliente";
+import Produto from "../../modelo/produto";
+import Servico from "../../modelo/servico";
 
 export default class CadastroConsumo {
     private clientes: Array<Cliente>;

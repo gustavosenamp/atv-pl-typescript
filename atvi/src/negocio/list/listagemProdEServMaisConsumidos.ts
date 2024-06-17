@@ -1,6 +1,6 @@
-import Cliente from "../modelo/cliente";
-import Produto from "../modelo/produto";
-import Servico from "../modelo/servico";
+import Cliente from "../../modelo/cliente";
+import Produto from "../../modelo/produto";
+import Servico from "../../modelo/servico";
 import Listagem from "./listagem";
 
 export default class ListagemProdEServMaisConsumidos extends Listagem {

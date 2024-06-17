@@ -1,5 +1,5 @@
-import Cliente from "../modelo/cliente";
-import Pet from "../modelo/pet";
+import Cliente from "../../modelo/cliente";
+import Pet from "../../modelo/pet";
 import Listagem from "./listagem";
 
 export default class ListagemConsumoTop10 extends Listagem {

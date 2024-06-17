@@ -1,5 +1,5 @@
-import Cliente from "../modelo/cliente";
-import Pet from "../modelo/pet";
+import Cliente from "../../modelo/cliente";
+import Pet from "../../modelo/pet";
 import Listagem from "./listagem";
 
 export default class ListagemClientes extends Listagem {
@@ -16,7 +16,8 @@ export default class ListagemClientes extends Listagem {
             console.log(`Nome: ` + cliente.nome);
             console.log(`Nome social: ` + cliente.nomeSocial);
             console.log(`CPF: ` + cliente.getCpf.getValor);
-            this.pets.forEach(pet => {
+            const petsDoCliente = this.pets.filter(pet => pet.dono === cliente.nome);
+            petsDoCliente.forEach(pet => {
                 console.log(`Pets: ` + pet.nome);
             });
             console.log(`--------------------------------------`);

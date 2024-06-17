@@ -1,4 +1,4 @@
-import Cliente from "../modelo/cliente";
+import Cliente from "../../modelo/cliente";
 
 class ListagemConsumoPorRaca {
     private clientes: Array<Cliente>;

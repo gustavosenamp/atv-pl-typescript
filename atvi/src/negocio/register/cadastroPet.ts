@@ -1,7 +1,7 @@
-import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente"
-import CPF from "../modelo/cpf"
-import Pet from "../modelo/pet"
+import Entrada from "../../io/entrada"
+import Cliente from "../../modelo/cliente"
+import CPF from "../../modelo/cpf"
+import Pet from "../../modelo/pet"
 import Cadastro from "./cadastro"
 
 export default class CadastroPet extends Cadastro {

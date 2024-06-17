@@ -1,6 +1,6 @@
 import Delete from "./delete";
-import Entrada from "../io/entrada";
-import Pet from "../modelo/pet";
+import Entrada from "../../io/entrada";
+import Pet from "../../modelo/pet";
 
 export default class DeletePet extends Delete {
     private pets: Array<Pet>;

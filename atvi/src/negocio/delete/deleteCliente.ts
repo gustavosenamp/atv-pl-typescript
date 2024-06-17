@@ -1,7 +1,7 @@
 import Delete from "./delete";
-import Cliente from "../modelo/cliente";
-import Pet from "../modelo/pet";
-import Entrada from "../io/entrada";
+import Cliente from "../../modelo/cliente";
+import Pet from "../../modelo/pet";
+import Entrada from "../../io/entrada";
 
 export default class DeleteCliente extends Delete {
     private clientes: Array<Cliente>;
