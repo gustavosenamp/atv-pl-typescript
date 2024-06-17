@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import ListaCliente from "./listaCliente";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
 import ListaPet from "./listaPet";
-import FormularioCadastroPet from "./formularioCadastroPet";
 import ListaProduto from "./listaProduto";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import ListaServico from "./listaServico";
 import FormularioCadastroServico from "./formularioCadastroServico";
 import FormularioConsumoCliente from "./formularioConsumoCliente";
 import ListaConsumoCliente from "./listaConsumoCliente";
+import FormularioCadastroClienteEPet from "./formularioCadastroClienteEPet";
 
 const Roteador = () => {
   const [tela, setTela] = useState("Clientes");
@@ -25,9 +24,8 @@ const Roteador = () => {
       tema="#e3f2fd"
       botoes={[
         "Clientes",
-        "Cadastros Clientes",
         "Pets",
-        "Cadastros Pets",
+        "Cadastros Clientes/Pets",
         "Produtos",
         "Cadastros Produtos",
         "Serviços",
@@ -50,7 +48,7 @@ const Roteador = () => {
       return (
         <>
           {barraNavegacao}
-          <FormularioCadastroCliente tema="#e3f2fd" />
+          <FormularioCadastroClienteEPet tema="#e3f2fd" />
         </>
       );
     case "Pets":
@@ -58,13 +56,6 @@ const Roteador = () => {
         <>
           {barraNavegacao}
           <ListaPet tema="#e3f2fd" />
-        </>
-      );
-    case "Cadastros Pets":
-      return (
-        <>
-          {barraNavegacao}
-          <FormularioCadastroPet tema="#e3f2fd" />
         </>
       );
     case "Produtos":
