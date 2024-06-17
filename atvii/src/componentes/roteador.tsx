@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import ListaCliente from "./listaClientes";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
+import FormularioCadastroCliente from "./formularioCadastroClienteEPet";
 import FormularioConsumoCliente from "./formularioConsumo";
 import ListaConsumoCliente from "./listaConsumo";
-import FormularioCadastroPet from "./formularioCadastroPet";
 import ListaPet from "./listaPets";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import ListaProduto from "./listaProduto";
@@ -39,11 +38,8 @@ export default class Roteador extends Component<{}, State> {
         tema="#e3f2fd"
         botoes={[
           "Clientes",
-          "Cadastros Clientes",
-          "Consumos",
-          "Cadastros Consumos",
           "Pets",
-          "Cadastros Pets",
+          "Cadastros Clientes/Pets",
           "Produtos",
           "Cadastros Produtos",
           "Serviços",
@@ -61,7 +57,7 @@ export default class Roteador extends Component<{}, State> {
             <ListaCliente tema="#e3f2fd" />
           </>
         );
-      case "Cadastros Clientes":
+      case "Cadastros Clientes/Pets":
         return (
           <>
             {barraNavegacao}
@@ -73,13 +69,6 @@ export default class Roteador extends Component<{}, State> {
           <>
             {barraNavegacao}
             <ListaPet tema="#e3f2fd" />
-          </>
-        );
-      case "Cadastros Pets":
-        return (
-          <>
-            {barraNavegacao}
-            <FormularioCadastroPet tema="#e3f2fd" />
           </>
         );
       case "Produtos":

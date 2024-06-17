@@ -10,7 +10,14 @@ export default class ListaServico extends Component<props> {
         return (
             <div className="container-fluid">
                 <h3 style={{ color: tema }}>Lista de Serviços</h3>
-                {/* Adicione aqui a lógica para listar os serviços */}
+                <div className="list-group">
+                    <button className="list-group-item list-group-item-action btn btn-link">Serviço 1</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Serviço 2</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Serviço 3</button>
+                    <button className="list-group-item list-group-item-action btn btn-link" style={{ backgroundColor: tema }}>Serviço 4</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Serviço 5</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Serviço 6</button>
+                </div>
             </div>
         )
     }

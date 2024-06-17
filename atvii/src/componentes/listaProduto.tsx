@@ -10,7 +10,14 @@ export default class ListaProduto extends Component<props> {
         return (
             <div className="container-fluid">
                 <h3 style={{ color: tema }}>Lista de Produtos</h3>
-                {/* Adicione aqui a lógica para listar os produtos */}
+                <div className="list-group">
+                    <button className="list-group-item list-group-item-action btn btn-link">Produto 1</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Produto 2</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Produto 3</button>
+                    <button className="list-group-item list-group-item-action btn btn-link" style={{ backgroundColor: tema }}>Produto 4</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Produto 5</button>
+                    <button className="list-group-item list-group-item-action btn btn-link">Produto 6</button>
+                </div>
             </div>
         )
     }
